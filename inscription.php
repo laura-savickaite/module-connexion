@@ -17,11 +17,15 @@ $confpassword=$_POST['password2'];
 
 //renvoi à la base de données
 $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
-$queryLogin = mysqli_query()
 
-//si conditions bonnes alors tu linseres dans la base de données
-    //INSERT INTO utilisateurs (login, prenom, nom, mail, password) 
-    //VALUES ($login, $firstname, $lastname, $mail, $pass2)
+//avec le WHERE c'est une comparaison : where la colonne login sql reconnait mon POST login donc ma variable $login ici :: si tu reconnais le même login, alors tu me donneras une erreur
+$queryLogin = mysqli_query ($connect, "SELECT `login` FROM `utilisateurs` WHERE 'login'=$login;");
+$recupLogin = mysqli_fetch_all($queryLogin, MYSQLI_ASSOC);
+
+$queryEmail = mysqli_query ($connect, "SELECT `email` FROM `utilisateurs` WHERE'email'=$email;");
+$recupEmail = mysqli_fetch_all($queryEmail, MYSQLI_ASSOC);
+
+
 
 //s'il y a déjà une session, cela évite à l'utilisateur d'être sur la page d'inscription
 if(isset($_SESSION['id'])){
@@ -44,27 +48,34 @@ if (!empty($_POST)){
 
     if (empty($login)) {
         $loginErr = "Veuillez rentrer un login.";
-      }elseif (LE LOGIN EXISTE DEJA){
+      }elseif ($recupLogin == $login){
         $loginEx = "Ce login existe déjà.";
       }
-      
+
     if (empty($prenom)) {
         $prenomErr = "Veuillez rentrer un prénom.";
-      }elseif (LE PRENOM EXISTE DEJA)
+      }
+
     if (empty($nom)) {
         $nomErr = "Veuillez rentrer un nom.";
-      }elseif (LE NOM EXISTE DEJA)
+      }
+
     if (empty($email)) {
         $emailErr = "Veuillez rentrer un email valide.";
-      }elseif (LEMAIL EST DEJA PRIS)
+      }elseif ($recupEmail == $email){
+        $emailEx = "Cet email est déjà utilisé.";
+      }
     if (empty($password)) {
         $passwordErr = "Veuillez rentrer un mot de passe.";
       } 
-    if ($confpassword === $password) {
+    if ($confpassword !== $password) {
         $confpasswordErr = "Le mot de passe et sa confirmation ne sont pas les mêmes.";
       } 
 
     // if(filter_var($NAME, FILTER_VALIDATE_SMTHING) !== false) pour valider les choses
+  }else {
+    //si conditions bonnes alors tu linseres dans la base de données avec un query de sql
+    $queryInsert = mysqli_query ($connect, "INSERT INTO utilisateurs (login, prenom, nom, mail, password) VALUES ($login, $firstname, $lastname, $mail, $pass2);");
   }  
 }
 
