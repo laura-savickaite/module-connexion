@@ -3,7 +3,18 @@ Le formulaire doit contenir l’ensemble des champs présents dans la table
 “utilisateurs” (sauf “id”) + une confirmation de mot de passe. Dès qu’un utilisateur remplit ce formulaire, les données sont insérées dans la base de
 données et l’utilisateur est redirigé vers la page de connexion. -->
 
+<?php
+session_start();
 
+
+if (!empty($_POST)){
+    extract($_POST);
+
+  if(isset($_POST['inscription'])){
+    echo $_POST['user_login'];
+  }  
+}
+?>
 
 
 
@@ -22,7 +33,7 @@ données et l’utilisateur est redirigé vers la page de connexion. -->
     </header>
 
     <main>
-    <form action="/ma-page-de-traitement" method="post">
+    <form action="inscription.php" method="post">
         <div>
             <label for="name">Login :</label>
             <input type="text" id="login" name="user_login">
@@ -49,10 +60,12 @@ données et l’utilisateur est redirigé vers la page de connexion. -->
             <input type="password" id="pass2" name="password2"
            minlength="8" required>
         </div>
+
+        <button type="submit" name="inscription">Sign in</button>
     </form>
-        <input type="submit" value="Sign in">
+        
     </main>
-    
+
     <footer>
     
     </footer>

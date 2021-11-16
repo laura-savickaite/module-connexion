@@ -3,6 +3,12 @@ Cette page possède un formulaire permettant à l’utilisateur de modifier ses
 informations. Ce formulaire est par défaut pré-rempli avec les informations
 qui sont actuellement stockées en base de données. -->
 
+<?php
+session_start();
+
+?>
+
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -20,7 +26,7 @@ qui sont actuellement stockées en base de données. -->
     <main>
 
     </main>
-    
+
     <footer>
     
     </footer>

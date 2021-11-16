@@ -3,6 +3,11 @@ Cette page est accessible UNIQUEMENT pour l’utilisateur “admin”. Elle
 permet de lister l’ensemble des informations des utilisateurs présents dans
 la base de données. -->
 
+<?php
+session_start();
+
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -20,7 +25,7 @@ la base de données. -->
     <main>
 
     </main>
-    
+
     <footer>
 
     </footer>

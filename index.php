@@ -1,4 +1,9 @@
 <!-- MA PAGE D'ACCUEIL DU SITE -->
+<?php
+session_start();
+
+?>
+
 
 <!doctype html>
 <html lang="fr">
@@ -17,7 +22,7 @@
     <main>
 
     </main>
-    
+
     <footer>
     
     </footer>

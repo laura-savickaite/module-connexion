@@ -4,6 +4,12 @@ formulaire est validé, s’il existe un utilisateur en bdd correspondant à ces
 informations, alors l’utilisateur est considéré comme connecté et une (ou
 plusieurs) variables de session sont créées. -->
 
+<?php
+session_start();
+
+?>
+
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -21,7 +27,7 @@ plusieurs) variables de session sont créées. -->
     <main>
 
     </main>
-    
+
     <footer>
     
     </footer>
