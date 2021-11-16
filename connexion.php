@@ -7,6 +7,8 @@ plusieurs) variables de session sont créées. -->
 <?php
 session_start();
 
+include(moduleconnexion.sql);
+
 ?>
 
 

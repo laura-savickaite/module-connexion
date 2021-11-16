@@ -4,16 +4,66 @@ Le formulaire doit contenir l’ensemble des champs présents dans la table
 données et l’utilisateur est redirigé vers la page de connexion. -->
 
 <?php
+
+$login=$_POST['user_login'];
+$prenom=$_POST['user_firstname'];
+$nom=$_POST['user_lastname'];
+$email=$_POST['user_mail'];
+$password=$_POST['password'];
+$confpassword=$_POST['password2'];
+
+//créer une session à chaque fois pour se souvenir de l'utilisateur
 session_start();
 
+//renvoi à la base de données
+include (moduleconnexion.sql); //?????
 
+//si conditions bonnes alors tu linseres dans la base de données
+    //INSERT INTO utilisateurs (login, prenom, nom, mail, password) 
+    //VALUES ($login, $firstname, $lastname, $mail, $pass2)
+
+//s'il y a déjà une session, cela évite à l'utilisateur d'être sur la page d'inscription
+if(isset($_SESSION['id'])){
+    header('Location: connexion.php');
+    exit;
+}
+
+//si post rempli alors tu m'extraies les informations
 if (!empty($_POST)){
     extract($_POST);
-
+//si appuyé sur le bouton inscription...
   if(isset($_POST['inscription'])){
-    echo $_POST['user_login'];
+      //trim évite les espaces, strtolower rend tout en minuscule, le htmlentities convertit les caractères spéciaux pour les entités HTML. Cela signifie qu'il va remplacer les caractères HTML comme <et> avec & lt; & gt ;. et Cela empêche les pirates d'exploiter le code en injectant du code HTML ou Javascript (Cross-site Scripting attacks) dans les formes.
+    $login=htmlentities(trim($login));
+    $prenom=htmlentities(trim($prenom));
+    $nom=htmlentities(trim($nom));
+    $email=htmlentities(strtolower(trim($email)));
+    $password=htmlentities(trim($password));
+    $confpassword=htmlentities(trim($confpassword));
+
+    if (empty($login)) {
+        $loginErr = "Veuillez rentrer un login.";
+      }elseif (LE LOGIN EXISTE DEJA)
+    if (empty($prenom)) {
+        $prenomErr = "Veuillez rentrer un prénom.";
+      }elseif (LE PRENOM EXISTE DEJA)
+    if (empty($nom)) {
+        $nomErr = "Veuillez rentrer un nom.";
+      }elseif (LE NOM EXISTE DEJA)
+    if (empty($email)) {
+        $emailErr = "Veuillez rentrer un email valide.";
+      }elseif (LEMAIL EST DEJA PRIS)
+    if (empty($password)) {
+        $passwordErr = "Veuillez rentrer un mot de passe.";
+      } 
+    if ($confpassword === $password) {
+        $confpasswordErr = "Le mot de passe et sa confirmation ne sont pas les mêmes.";
+      } 
+
+    // if(filter_var($NAME, FILTER_VALIDATE_SMTHING) !== false) pour valider les choses
   }  
 }
+
 ?>
 
 
