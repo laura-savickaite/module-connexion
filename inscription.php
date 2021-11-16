@@ -5,6 +5,9 @@ données et l’utilisateur est redirigé vers la page de connexion. -->
 
 <?php
 
+//créer une session à chaque fois pour se souvenir de l'utilisateur
+session_start();
+
 $login=$_POST['user_login'];
 $prenom=$_POST['user_firstname'];
 $nom=$_POST['user_lastname'];
@@ -12,11 +15,9 @@ $email=$_POST['user_mail'];
 $password=$_POST['password'];
 $confpassword=$_POST['password2'];
 
-//créer une session à chaque fois pour se souvenir de l'utilisateur
-session_start();
-
 //renvoi à la base de données
-include (moduleconnexion.sql); //?????
+$connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
+$queryLogin = mysqli_query()
 
 //si conditions bonnes alors tu linseres dans la base de données
     //INSERT INTO utilisateurs (login, prenom, nom, mail, password) 
@@ -43,7 +44,10 @@ if (!empty($_POST)){
 
     if (empty($login)) {
         $loginErr = "Veuillez rentrer un login.";
-      }elseif (LE LOGIN EXISTE DEJA)
+      }elseif (LE LOGIN EXISTE DEJA){
+        $loginEx = "Ce login existe déjà.";
+      }
+      
     if (empty($prenom)) {
         $prenomErr = "Veuillez rentrer un prénom.";
       }elseif (LE PRENOM EXISTE DEJA)
