@@ -7,7 +7,7 @@ plusieurs) variables de session sont créées. -->
 <?php
 session_start();
 
-include(moduleconnexion.sql);
+
 
 ?>
 
@@ -27,7 +27,17 @@ include(moduleconnexion.sql);
     </header>
 
     <main>
-
+    <form action="" method="post">
+        <div>
+            <label for="name">Login :</label>
+            <input type="text" id="login" name="user_login"> 
+        </div>
+        <div>
+          <label for="msg">Mot de passe :</label>
+          <input type="password" id="pass" name="password"minlength="8" required>
+        </div>
+      <button type="submit" name="connexion">Log in</button>
+    </form>
     </main>
 
     <footer>

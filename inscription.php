@@ -115,6 +115,8 @@ if(isset($_SESSION['id'])){
         </div>
                 
                 <button type="submit" name="inscription">Sign in</button>
+                <div>Vous avez déjà un compte ? </div>
+                <button type="submit" name="connexion">Log in</button>
         </form>
 
             </main>
