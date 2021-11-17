@@ -30,7 +30,7 @@ if(isset($_POST['connexion'])){
     $repPassword = mysqli_query($connect, "SELECT `password` FROM `utilisateurs` WHERE `password`= '".$password."'");
 
     if(mysqli_num_rows($repPassword)){
-      echo "ok"; 
+      $_SESSION['utilisateur']=$login;
     }else {
     $logErr = "Le mot de passe ou le login rentrés ne sont pas corrects.";
   }
