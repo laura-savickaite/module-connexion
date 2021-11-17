@@ -10,11 +10,7 @@ session_start();
 
 $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
-if(isset($_SESSION['id'])){
-  header('Location: index.php');
-  exit;
-}
-var_dump ($_SESSION);
+//var_dump ($_SESSION);
 
 if(isset($_POST['connexion'])){
   $login=$_POST['user_login'];
@@ -27,10 +23,12 @@ if(isset($_POST['connexion'])){
   //num rows --- si true or false  (1 == la requête marche) si la requête marche ça passe
   if(mysqli_num_rows($repLogin)){
     echo"in";
-    $repPassword = mysqli_query($connect, "SELECT `password` FROM `utilisateurs` WHERE `password`= '".$password."'");
+    $repPassword = mysqli_query($connect, "SELECT `password` FROM `utilisateurs` 
+    WHERE `password`= '".$password."'");
 
     if(mysqli_num_rows($repPassword)){
-      $_SESSION['utilisateur']=$login;
+      $_SESSION['utilisateur']= $login;
+      header('Location: index.php');
     }else {
     $logErr = "Le mot de passe ou le login rentrés ne sont pas corrects.";
   }
@@ -63,7 +61,7 @@ if(isset($_POST['connexion'])){
         </div>
         <div>
           <label for="msg">Mot de passe :</label>
-          <input type="password" id="pass" name="password"minlength="8" required>
+          <input type="password" id="pass" name="password">
         </div>
       <button type="submit" name="connexion">Log in</button>
     </form>

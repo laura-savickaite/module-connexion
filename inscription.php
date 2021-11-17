@@ -13,7 +13,7 @@ session_start();
 $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
 // //s'il y a déjà une session, cela évite à l'utilisateur d'être sur la page d'inscription
-if(isset($_SESSION['id'])){
+if(isset($_SESSION['utilisateur'])){
       header('Location: connexion.php');
       exit;
   }

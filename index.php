@@ -1,7 +1,7 @@
 <!-- MA PAGE D'ACCUEIL DU SITE -->
 <?php
 session_start();
-
+var_dump($_SESSION);
 ?>
 
 

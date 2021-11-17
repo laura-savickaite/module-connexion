@@ -5,7 +5,7 @@ qui sont actuellement stockées en base de données. -->
 
 <?php
 session_start();
-
+var_dump($_SESSION);
 ?>
 
 
@@ -24,6 +24,7 @@ session_start();
     </header>
 
     <main>
+      Bonjour <?php echo $_SESSION['utilisateur']; ?>
 
     </main>
 
