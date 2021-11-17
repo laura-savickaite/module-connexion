@@ -67,6 +67,7 @@ if(isset($_SESSION['id'])){
     
     //pk quand je mets $validation=true ça ne marche pas alors que juste validation si
   if ($validation){
+    //maybe crypter le mdp à la fin
     //si conditions bonnes alors tu linseres dans la base de données avec un query de sql
     $queryInsert = mysqli_query($connect, "INSERT INTO `utilisateurs` (login, prenom, nom, password) VALUES ('$login', '$prenom', '$nom', '$password')"); 
 
