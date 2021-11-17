@@ -3,6 +3,7 @@ Le formulaire doit avoir deux inputs : “login” et “password”. Lorsque le
 formulaire est validé, s’il existe un utilisateur en bdd correspondant à ces
 informations, alors l’utilisateur est considéré comme connecté et une (ou
 plusieurs) variables de session sont créées. -->
+<!-- créer une variable de session = qui stocke le login, le statut (admin/utilisateur) etc... -->
 
 <?php
 session_start();
@@ -13,6 +14,7 @@ if(isset($_SESSION['id'])){
   header('Location: index.php');
   exit;
 }
+var_dump ($_SESSION);
 
 if(isset($_POST['connexion'])){
   $login=$_POST['user_login'];
@@ -22,17 +24,17 @@ if(isset($_POST['connexion'])){
   $password=htmlentities(trim($password));
 
   $repLogin = mysqli_query($connect, "SELECT `login` FROM `utilisateurs` WHERE `login`= '".$login."'");
+  //num rows --- si true or false  (1 == la requête marche) si la requête marche ça passe
   if(mysqli_num_rows($repLogin)){
+    echo"in";
     $repPassword = mysqli_query($connect, "SELECT `password` FROM `utilisateurs` WHERE `password`= '".$password."'");
 
     if(mysqli_num_rows($repPassword)){
       echo "ok"; 
-    }
-    if(mysqli_num_rows($repLogin) !== $login && mysqli_num_rows($repPassword) !== $password){
-      $logErr = "Le mot de passe ou le login rentrés ne correspondent pas.";
-    }
+    }else {
+    $logErr = "Le mot de passe ou le login rentrés ne sont pas corrects.";
   }
-
+  }
 }
 
 ?>
