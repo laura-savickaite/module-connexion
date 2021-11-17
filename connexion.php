@@ -7,7 +7,33 @@ plusieurs) variables de session sont créées. -->
 <?php
 session_start();
 
+$connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
+if(isset($_SESSION['id'])){
+  header('Location: index.php');
+  exit;
+}
+
+if(isset($_POST['connexion'])){
+  $login=$_POST['user_login'];
+  $password=$_POST['password'];
+
+  $login=htmlentities(trim($login));
+  $password=htmlentities(trim($password));
+
+  $repLogin = mysqli_query($connect, "SELECT `login` FROM `utilisateurs` WHERE `login`= '".$login."'");
+  if(mysqli_num_rows($repLogin)){
+    $repPassword = mysqli_query($connect, "SELECT `password` FROM `utilisateurs` WHERE `password`= '".$password."'");
+
+    if(mysqli_num_rows($repPassword)){
+      echo "ok"; 
+    }
+    if(mysqli_num_rows($repLogin) !== $login && mysqli_num_rows($repPassword) !== $password){
+      $logErr = "Le mot de passe ou le login rentrés ne correspondent pas.";
+    }
+  }
+
+}
 
 ?>
 
@@ -28,6 +54,7 @@ session_start();
 
     <main>
     <form action="" method="post">
+        <div><?php echo $logErr; ?></div>
         <div>
             <label for="name">Login :</label>
             <input type="text" id="login" name="user_login"> 

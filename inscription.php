@@ -38,9 +38,7 @@ if(isset($_SESSION['id'])){
     $nom=htmlentities(trim($nom));
     $password=htmlentities(trim($password));
     $confpassword=htmlentities(trim($confpassword));
-    
-    $login_len = strlen($login);
-    
+      
     
 
   
