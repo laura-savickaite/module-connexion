@@ -22,12 +22,12 @@ if(isset($_POST['connexion'])){
   $repLogin = mysqli_query($connect, "SELECT `login` FROM `utilisateurs` WHERE `login`= '".$login."'");
   //num rows --- si true or false  (1 == la requête marche) si la requête marche ça passe
   if(mysqli_num_rows($repLogin)){
-    echo"in";
     $repPassword = mysqli_query($connect, "SELECT `password` FROM `utilisateurs` 
     WHERE `password`= '".$password."'");
 
     if(mysqli_num_rows($repPassword)){
-      $_SESSION['utilisateur']= $login;
+      $_SESSION['utilisateur_login']= $login;
+      $_SESSION['utilisateur_password']= $password;
       header('Location: index.php');
     }else {
     $logErr = "Le mot de passe ou le login rentrés ne sont pas corrects.";
