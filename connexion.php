@@ -7,10 +7,16 @@ plusieurs) variables de session sont créées. -->
 
 <?php
 session_start();
+var_dump($_SESSION);
 
 $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
 //var_dump ($_SESSION);
+
+if(isset($_POST['logout']))
+{
+  session_destroy();
+}
 
 if(isset($_POST['connexion'])){
   $login=$_POST['user_login'];
@@ -24,15 +30,21 @@ if(isset($_POST['connexion'])){
   $repTest = mysqli_query($connect, "SELECT * FROM `utilisateurs` WHERE `login`= '".$login."'");
   $rTest = mysqli_fetch_all($repTest,MYSQLI_ASSOC);
   foreach ($rTest as $value){
-    var_dump ($value);
+    //var_dump ($value);
+    echo "<tr><td>". $value ['prenom'] ."</td>";
+    echo "<tr><td>". $value ['nom'] ."</td>";
+    echo "<tr><td>". $value ['bio'] ."</td>";
+    echo "<tr><td>". $value ['imgprofil'] ."</td>";
     
+    $_SESSION['utilisateur_prenom']=$value ['prenom'];
+    $_SESSION['utilisateur_nom']=$value ['nom'];
+    $_SESSION['utilisateur_bio']=$value ['bio'];
+    $_SESSION['utilisateur_img']=$value ['imgprofil'];
   }
 
   //_____________________
 
   $repLogin = mysqli_query($connect, "SELECT `login` FROM `utilisateurs` WHERE `login`= '".$login."'");
-  $repImg = mysqli_query($connect, "SELECT `imgprofil` FROM `utilisateurs` WHERE `login`= '".$login."'");
-  $img=mysqli_fetch_assoc($repImg);
   //num rows --- si true or false  (1 == la requête marche) si la requête marche ça passe
   if(mysqli_num_rows($repLogin)){
     $repPassword = mysqli_query($connect, "SELECT `password` FROM `utilisateurs` 
@@ -41,15 +53,7 @@ if(isset($_POST['connexion'])){
     if(mysqli_num_rows($repPassword)){
       $_SESSION['utilisateur_login']= $login;
       $_SESSION['utilisateur_password']= $password;
-      $_SESSION['utilisateur_img']=$img;
-      //____________________
-      //pareillement elles seront usées dans profil.php
-      $_SESSION['utilisateur_prenom']=$prenom;
-      $_SESSION['utilisateur_nom']=$nom;
-      $_SESSION['utilisateur_bio']=$bio;
-
-
-      // header('Location: index.php');
+      header('Location:index.php');
     }else {
     $logErr = "Le mot de passe ou le login rentrés ne sont pas corrects.";
   }

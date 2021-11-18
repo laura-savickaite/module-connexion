@@ -3,7 +3,9 @@
 session_start();
 var_dump($_SESSION);
 
-// $admin = $_SESSION['utilisateur_login'] => "admin";
+// foreach($_SESSION['utilisateur_img'] as $imgprof){
+//   var_dump($imgprof);
+// }
 
 
   if(!isset($_SESSION['utilisateur_login'])){ 
@@ -45,7 +47,7 @@ if (isset($_POST['logout'])){
 
     <main>
     
-      <img src="Uploads/<?= $_SESSION['utilisateur_img']?>">
+    <img src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="180px" height="185px">
     
     </main>
 

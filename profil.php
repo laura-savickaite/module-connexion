@@ -12,21 +12,14 @@ name of the file (and extension and location) is stored in a database (with the 
 
 <?php
 session_start();
-var_dump($_SESSION);
 
 $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 $user=$_SESSION['utilisateur_login'];
 
 $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$user."'");
 
-
-
-
-
-
-
 //le bout de code suivant est seulement pour l'image de profil -- non demandé par la consigne
-  if ($_POST['sauvimg']){
+  if (isset($_POST['sauvimg'])){
     //$_FILES gets all the information from the uploaded file from an imput from a form
     $file=$_FILES['profilImg'];
     //print_r($file);
@@ -38,8 +31,6 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$
     $fileTmpName=$_FILES['profilImg']['tmp_name'];
     $fileSize=$_FILES['profilImg']['size'];
     $fileError=$_FILES['profilImg']['error'];
-
-    //var_dump($fileTmpName);
 
     //which files - donc leur extension - we want to allow:
     $fileExt = explode('.', $fileName); // we want to explode the name by the dot pour avoir le nom d'un côté et son extension de l'autre
@@ -61,21 +52,15 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$
           $fileDestination = "Uploads/".$fileNewName;
 
           move_uploaded_file($fileTmpName, $fileDestination);
+
           $queryInsert = mysqli_query($connect, "UPDATE `utilisateurs` SET `imgprofil`='$fileNewName' WHERE `login`= '".$user."'");
 
-          $result = mysqli_query($connect, "SELECT * FROM `utilisateurs`  WHERE `login`= '".$test."'");
-          $data = mysqli_fetch_array($result); var_dump($data);
+          $data = mysqli_fetch_array($queryInsert);
 
-          $_SESSION['utilisateur_img']=$data['imgprofil'];
-
-          while($data = mysqli_fetch_array($result)){
-            $_SESSION['utilisateur_img']=$data['imgprofil'];
-            ?>
-          <div class="profilepic">
-                <img src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="180px" height="185px">
-          </div>
-            <?php
-          } 
+          while($data = mysqli_fetch_array($queryInsert)){ ?>
+            <img src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="180px" height="185px">
+        <?php
+          }
         }else {
           $sizeErr .= "Le fichier est trop lourd.";
         }
@@ -86,17 +71,8 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$
       $profilErr .= "Ce type de fichier n'est pas pris en compte par le site web. Extensions possibles : .jpeg, .jpg et .png.";
     }
   }
-  if (isset($_SESSION['utilisateur_img'])){
-    echo "<img src='Uploads/". $_SESSION['utilisateur_img'] ."'>";
-  }
-
-// if (mysqli_num_rows($user)){
-//   while ($row1=mysqli_fetch_array($user)){ 
-//     echo"ok";
-//   }
-
-  ?>
-  
+  var_dump($_SESSION); ?>
+  <img src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="180px" height="185px">
 
 
 <!doctype html>
