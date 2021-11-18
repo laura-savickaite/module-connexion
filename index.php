@@ -3,6 +3,26 @@
 session_start();
 var_dump($_SESSION);
 
+// $admin = $_SESSION['utilisateur_login'] => "admin";
+
+
+  if(!isset($_SESSION['utilisateur_login'])){ 
+    
+    ?>
+
+  <a href="connexion.php">Log in</a>
+  <a href="inscription.php">Register</a>
+
+  <?php
+    
+  }else { ?>
+  
+    <form action="index.php" method="post">
+        <button type="submit" name="logout">Deconnexion</button></form>
+<?php
+}
+
+
 if (isset($_POST['logout'])){
   session_destroy();
 }
@@ -24,8 +44,8 @@ if (isset($_POST['logout'])){
     </header>
 
     <main>
-    <form action="index.php" method="post">
-      <button type="submit" name="logout">Deconnexion</button></form>
+    
+      <img src="Uploads/<?= $_SESSION['utilisateur_img']?>">
     
     </main>
 

@@ -19,7 +19,20 @@ if(isset($_POST['connexion'])){
   $login=htmlentities(trim($login));
   $password=htmlentities(trim($password));
 
+//_____________________
+//ces informations récoltées sont utilisées dans profil.php
+  $repTest = mysqli_query($connect, "SELECT * FROM `utilisateurs` WHERE `login`= '".$login."'");
+  $rTest = mysqli_fetch_all($repTest,MYSQLI_ASSOC);
+  foreach ($rTest as $value){
+    var_dump ($value);
+    
+  }
+
+  //_____________________
+
   $repLogin = mysqli_query($connect, "SELECT `login` FROM `utilisateurs` WHERE `login`= '".$login."'");
+  $repImg = mysqli_query($connect, "SELECT `imgprofil` FROM `utilisateurs` WHERE `login`= '".$login."'");
+  $img=mysqli_fetch_assoc($repImg);
   //num rows --- si true or false  (1 == la requête marche) si la requête marche ça passe
   if(mysqli_num_rows($repLogin)){
     $repPassword = mysqli_query($connect, "SELECT `password` FROM `utilisateurs` 
@@ -28,11 +41,21 @@ if(isset($_POST['connexion'])){
     if(mysqli_num_rows($repPassword)){
       $_SESSION['utilisateur_login']= $login;
       $_SESSION['utilisateur_password']= $password;
-      header('Location: index.php');
+      $_SESSION['utilisateur_img']=$img;
+      //____________________
+      //pareillement elles seront usées dans profil.php
+      $_SESSION['utilisateur_prenom']=$prenom;
+      $_SESSION['utilisateur_nom']=$nom;
+      $_SESSION['utilisateur_bio']=$bio;
+
+
+      // header('Location: index.php');
     }else {
     $logErr = "Le mot de passe ou le login rentrés ne sont pas corrects.";
   }
   }
+
+  $repLogin = mysqli_query($connect, "SELECT `login` FROM `utilisateurs` WHERE `login`= '".$login."'");
 }
 
 ?>

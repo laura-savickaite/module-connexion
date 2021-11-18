@@ -5,7 +5,9 @@ la base de données. -->
 
 <?php
 session_start();
-
+if ($_SESSION['utilisateur_login']='admin'){
+  
+}
 ?>
 
 <!doctype html>
