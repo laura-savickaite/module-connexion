@@ -2,6 +2,10 @@
 <?php
 session_start();
 var_dump($_SESSION);
+
+if (isset($_POST['logout'])){
+  session_destroy();
+}
 ?>
 
 
@@ -20,7 +24,9 @@ var_dump($_SESSION);
     </header>
 
     <main>
-
+    <form action="index.php" method="post">
+      <button type="submit" name="logout">Deconnexion</button></form>
+    
     </main>
 
     <footer>

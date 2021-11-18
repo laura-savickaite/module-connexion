@@ -22,7 +22,7 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 if ($_POST['sauvimg']){
   //$_FILES gets all the information from the uploaded file from an imput from a form
   $file=$_FILES['profilImg'];
-  print_r($file);
+  //print_r($file);
   //le ['name'] en dessous va donner le nom que l'on voit dans l'array disponible avec le var_dump d'au-dessus etc...pour ce qui suit (type...)
   $fileName=$_FILES['profilImg']['name'];
   $fileType=$_FILES['profilImg']['type'];
@@ -32,6 +32,8 @@ if ($_POST['sauvimg']){
   $fileSize=$_FILES['profilImg']['size'];
   $fileError=$_FILES['profilImg']['error'];
 
+  //var_dump($fileTmpName);
+
   //which files - donc leur extension - we want to allow:
   $fileExt = explode('.', $fileName); // we want to explode the name by the dot pour avoir le nom d'un côté et son extension de l'autre
   $fileActExt = strtolower(end($fileExt)); //ici on fait en sorte que l'extension upload soit en minuscule pck certains peuvent upload avec JPG et rend le truc plus facile à manage si tout est pareil
@@ -40,7 +42,7 @@ if ($_POST['sauvimg']){
   $allowedExt = array('jpeg', 'jpg', 'png');
   
   if (in_array($fileActExt, $allowedExt)){
-    echo "ok";
+
     if ($fileError === 0){
       
       if ($fileSize < 1000000){
@@ -49,12 +51,19 @@ if ($_POST['sauvimg']){
         $fileNewName = uniqid('', true).".".$fileActExt; //on a rajouté l'extension sinon renommé sans extension et donc ce n'est plus une image
         //on veut lui dire où il va être envoyé
       
-        //$fileDestination = '/Uploads'.$fileNewName;
-        
-        //move_uploaded_file($fileTmpName, $fileDestination);
-        IL FAUT QUE JE FASSE UNE ID-IMG AVEC UNE AUTRE TABLE
-        $queryInsert = mysqli_query($connect, "INSERT INTO `utilisateurs` (login, password, imgprofil) VALUES ('$test', '$test2', '$imgprofil')");
-        echo "ok";
+        $fileDestination = "Uploads/".$fileNewName;
+
+        move_uploaded_file($fileTmpName, $fileDestination);
+        $queryInsert = mysqli_query($connect, "UPDATE `utilisateurs` SET `imgprofil`='$fileNewName' WHERE `login`= '".$test."'");
+
+        $result = mysqli_query($connect, "SELECT * FROM `utilisateurs`  WHERE `login`= '".$test."'");
+        while($data = mysqli_fetch_array($result)){
+          ?>
+        <div class="profilepic">
+              <img src="Uploads/<?php echo $data['imgprofil']; ?>" alt="Profile picture" class='profil' width="180px" height="185px">
+        </div>
+          <?php
+        }
       }else {
         $sizeErr .= "Le fichier est trop lourd.";
       }
@@ -64,9 +73,9 @@ if ($_POST['sauvimg']){
   }else{
     $profilErr .= "Ce type de fichier n'est pas pris en compte par le site web. Extensions possibles : .jpeg, .jpg et .png.";
   }
-
 }
-?>
+  ?>
+  
 
 
 <!doctype html>
@@ -85,9 +94,7 @@ if ($_POST['sauvimg']){
 
     <main>
       Bonjour <?php echo $_SESSION['utilisateur_login']; ?>
-      <div class="profilepic">
-        <img src='' alt="Profile picture" class='profil' width="180px" height="185px">
-      </div>
+      
       <form action="profil.php" method="POST" enctype="multipart/form-data">
             <input type="file" name="profilImg"><br><br>
             <span><?php echo $profilErr; echo $pictureErr; echo $sizeErr; ?></span>
@@ -98,6 +105,31 @@ if ($_POST['sauvimg']){
       </div>
       </form>
 
+      <form action="profil.php" method="post">
+        <div>
+            <label for="name">Login :</label>
+            <input type="text" id="login" name="user_login"> <p><span class="error">*<?php echo $loginErr;?></span></p>
+        </div>
+        <div>
+          <label for="name">Prénom :</label>
+          <input type="text" id="firstname" name="user_firstname">
+        </div>
+        <div>
+          <label for="name">Nom :</label>
+          <input type="text" id="lastname" name="user_lastname">
+        </div>
+        <div>
+          <label for="msg">Mot de passe :</label>
+        <div>Le mdp doit comprendre au moins XXXX,XXXX et XXXXX (quand on clique sur le champs ceci apparait)</div>
+          <input type="password" id="pass" name="password"minlength="8" required><p><span class="error"> *<?php echo $passwordErr;?></span></p>
+          <label for="msg">Confirmation du mot de passe :</label>
+          <input type="password" id="pass2" name="password2"
+          minlength="8" required><?php echo $confpasswordErr;?>
+        </div>
+                
+                <button type="submit" name="enregistrer">Save the changes</button>
+        </form>
+
     </main>
 
     <footer>
@@ -105,4 +137,3 @@ if ($_POST['sauvimg']){
     </footer>
 </body>
 </html>
-GENERER LE CHEMIN HTTP CLAUDINARY
