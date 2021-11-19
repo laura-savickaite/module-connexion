@@ -1,8 +1,3 @@
-<!-- LE FORMULAIRE D'INSCRIPTION POUR MON SITE:
-Le formulaire doit contenir l’ensemble des champs présents dans la table
-“utilisateurs” (sauf “id”) + une confirmation de mot de passe. Dès qu’un utilisateur remplit ce formulaire, les données sont insérées dans la base de
-données et l’utilisateur est redirigé vers la page de connexion. -->
-
 <?php
 
 //var_dump($_POST);
@@ -75,7 +70,7 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inscription || TITRE DE MON SITE</title>
-  <link rel="stylesheet" href="UC.css">
+  <link rel="stylesheet" href="css/inscription.css">
 </head>
 <body>
     <header>
@@ -83,34 +78,43 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
     </header>
 
     <main>
-    <p><span class="error">* ces champs sont obligatoires</span></p>
-    <form action="inscription.php" method="post">
-        <div>
-            <label for="name">Login :</label>
-            <input type="text" id="login" name="user_login"> <p><span class="error">*<?php echo $loginErr;?></span></p>
-        </div>
-        <div>
-          <label for="name">Prénom :</label>
-          <input type="text" id="firstname" name="user_firstname">
-        </div>
-        <div>
-          <label for="name">Nom :</label>
-          <input type="text" id="lastname" name="user_lastname">
-        </div>
-        <div>
-          <label for="msg">Mot de passe :</label>
-        <div>Le mdp doit comprendre au moins XXXX,XXXX et XXXXX (quand on clique sur le champs ceci apparait)</div>
-          <input type="password" id="pass" name="password"minlength="8" required><p><span class="error"> *<?php echo $passwordErr;?></span></p>
-          <label for="msg">Confirmation du mot de passe :</label>
-          <input type="password" id="pass2" name="password2"
-          minlength="8" required><?php echo $confpasswordErr;?>
-        </div>
-                
-                <button type="submit" name="inscription">Sign in</button>
-                <div>Vous avez déjà un compte ? </div>
-                <button type="submit" name="connexion">Log in</button>
-        </form>
-
+    <article id="form_inscription">
+      <p><span class="error">* ces champs sont obligatoires</span></p>
+      <form action="inscription.php" method="post">
+          <div>
+              <label for="name">Login :</label>
+              <input type="text" id="login" name="user_login"> <p><span class="error">*<?php echo $loginErr;?></span></p>
+          </div>
+          <div>
+            <label for="name">Prénom :</label>
+            <input type="text" id="firstname" name="user_firstname">
+          </div>
+          <div>
+            <label for="name">Nom :</label>
+            <input type="text" id="lastname" name="user_lastname">
+          </div>
+          <div>
+            <label for="msg">Mot de passe :</label>
+          <div>Le mdp doit comprendre au moins XXXX,XXXX et XXXXX (quand on clique sur le champs ceci apparait)</div>
+            <input type="password" id="pass" name="password"minlength="8" required><p><span class="error"> *<?php echo $passwordErr;?></span></p>
+            <label for="msg">Confirmation du mot de passe :</label>
+            <input type="password" id="pass2" name="password2"
+            minlength="8" required><?php echo $confpasswordErr;?>
+          </div>
+                  
+                  <button type="submit" name="inscription">Sign in</button>
+                  <div>Vous avez déjà un compte ? </div>
+                  <button type="submit" name="connexion">Log in</button>
+          </form>
+  </article>
+  <article class="aside_inscription">
+  <!-- <img id="img" src="Images/leafpattern.jpeg" class="aside_inscription"> -->
+  </article>
+  <article id="icon_inscription">
+    <div><img src="Images/cercle1.png" class="cercle"></div>
+    <div><img src="Images/cercle2.png" class="cercle"></div>
+    <div><img src="Images/cercle3.png" class="cercle"></div>
+  </article>
             </main>
             
     <footer>
