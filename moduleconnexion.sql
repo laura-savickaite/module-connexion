@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 16 nov. 2021 à 13:14
+-- Généré le : ven. 19 nov. 2021 à 15:09
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.0.12
 
@@ -30,17 +30,22 @@ SET time_zone = "+00:00";
 CREATE TABLE `utilisateurs` (
   `id` int(11) NOT NULL,
   `login` varchar(255) NOT NULL,
-  `prenom` varchar(255) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `prenom` varchar(255) DEFAULT NULL,
+  `nom` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `imgprofil` varchar(255) DEFAULT NULL,
+  `bio` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id`, `login`, `prenom`, `nom`, `password`) VALUES
-(1, 'admin', 'admin', 'admin', 'admin');
+INSERT INTO `utilisateurs` (`id`, `login`, `prenom`, `nom`, `password`, `imgprofil`, `bio`) VALUES
+(1, 'admin', 'admin', 'admin', 'admin', '', ''),
+(43, 'tomnook', 'tom', 'nook', 'aixenprovence', '619767a18d0dd7.64059209.jpeg', 'inventeur du capitalisme'),
+(45, 'isabelle', 'isabelle', 'ledoudou', '', '61976c8698e4c0.90476066.png', 'bonjour les amis !'),
+(46, 'marshal', 'marshal', 'lebb', 'animalcrossing', '619768baa73867.34105540.png', NULL);
 
 --
 -- Index pour les tables déchargées
@@ -60,7 +65,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
