@@ -3,11 +3,6 @@
 session_start();
 var_dump($_SESSION);
 
-// foreach($_SESSION['utilisateur_img'] as $imgprof){
-//   var_dump($imgprof);
-// }
-
-
   if(!isset($_SESSION['utilisateur_login'])){ 
     
     ?>
@@ -18,12 +13,12 @@ var_dump($_SESSION);
   <?php
     
   }else { ?>
-  
+    <a href="profil.php">Mon profil</a>
     <form action="index.php" method="post">
-        <button type="submit" name="logout">Deconnexion</button></form>
+        <button type="submit" name="logout">Deconnexion</button>
+    </form>
 <?php
 }
-
 
 if (isset($_POST['logout'])){
   session_destroy();

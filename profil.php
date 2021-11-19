@@ -54,13 +54,17 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$
           move_uploaded_file($fileTmpName, $fileDestination);
 
           $queryInsert = mysqli_query($connect, "UPDATE `utilisateurs` SET `imgprofil`='$fileNewName' WHERE `login`= '".$user."'");
+           
+          header('Location:connexion.php');
 
           $data = mysqli_fetch_array($queryInsert);
 
           while($data = mysqli_fetch_array($queryInsert)){ ?>
             <img src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="180px" height="185px">
+          
         <?php
-          }
+         }
+         
         }else {
           $sizeErr .= "Le fichier est trop lourd.";
         }

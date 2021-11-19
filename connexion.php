@@ -40,6 +40,7 @@ if(isset($_POST['connexion'])){
     $_SESSION['utilisateur_nom']=$value ['nom'];
     $_SESSION['utilisateur_bio']=$value ['bio'];
     $_SESSION['utilisateur_img']=$value ['imgprofil'];
+    $_SESSION['utilisateur_id']=$value ['id'];
   }
 
   //_____________________
