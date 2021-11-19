@@ -3,7 +3,7 @@
 session_start();
 var_dump($_SESSION);
 
-  if(!isset($_SESSION['utilisateur_login'])){ 
+  if(!isset($_SESSION['utilisateur_id'])){ 
     
     ?>
 
@@ -19,6 +19,7 @@ var_dump($_SESSION);
     </form>
 <?php
 }
+  
 
 if (isset($_POST['logout'])){
   session_destroy();

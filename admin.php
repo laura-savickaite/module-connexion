@@ -5,8 +5,10 @@ la base de données. -->
 
 <?php
 session_start();
-if ($_SESSION['utilisateur_login']='admin'){
-  
+if (!isset($_SESSION['utilisateur_id'])){
+    header('Location:index.php');
+} else {
+  //vérifier que lutilisateur en question soit ladmin
 }
 ?>
 

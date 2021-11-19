@@ -3,18 +3,18 @@ Cette page possède un formulaire permettant à l’utilisateur de modifier ses
 informations. Ce formulaire est par défaut pré-rempli avec les informations
 qui sont actuellement stockées en base de données. -->
 
-<!-- pour PROFILE PICTURE : Write a handler, which takes control of he files
-
-check the mime type by checking the content, not the extension
-have arbitrary names, not the name from the upload, that might interfer (imagine 5 people uploading a "profile.png")
-let the handler deliver the image by an id ("...imagloader?file=4711"),
-name of the file (and extension and location) is stored in a database (with the user record?) -->
-
 <?php
 session_start();
 
 $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
-$user=$_SESSION['utilisateur_login'];
+
+if(!isset($_SESSION['utilisateur_id'])){
+  header('Location:connexion.php');
+}else {
+  echo "ok";
+}
+
+
 
 $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$user."'");
 
@@ -109,7 +109,7 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$
       <form action="profil.php" method="post">
         <div>
             <label for="name">Login :</label>
-            <input type="text" value="<?php echo $user ?>" id="login" name="user_login"> <p><span class="error">*<?php echo $loginErr;?></span></p>
+            <input type="text" value="<?php echo $_SESSION['utilisateur_login'] ?>" id="login" name="user_login"> <p><span class="error">*<?php echo $loginErr;?></span></p>
         </div>
         <div>
           <label for="name">Prénom :</label>
