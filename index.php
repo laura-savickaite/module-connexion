@@ -1,7 +1,8 @@
 <!-- MA PAGE D'ACCUEIL DU SITE -->
 <?php
 session_start();
-var_dump($_SESSION);
+//var_dump($_SESSION);
+$connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
   if(!isset($_SESSION['utilisateur_id'])){ 
     
@@ -12,14 +13,30 @@ var_dump($_SESSION);
 
   <?php
     
-  }else { ?>
+  }
+  else { 
+    ?>
     <a href="profil.php">Mon profil</a>
     <form action="index.php" method="post">
         <button type="submit" name="logout">Deconnexion</button>
     </form>
 <?php
 }
-  
+
+$query=mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `id`= '".$_SESSION['utilisateur_id']."'");
+$reponse = mysqli_fetch_array($query, MYSQLI_ASSOC);
+foreach($reponse as $admindex){
+
+  if($admindex == "1"){ ?>
+    <a href="profil.php">Mon profil</a>
+    <a href="admin.php">Tableau Admin</a>
+    <form action="index.php" method="post">
+        <button type="submit" name="logout">Deconnexion</button>
+    </form>
+  <?php
+
+  }
+}
 
 if (isset($_POST['logout'])){
   session_destroy();

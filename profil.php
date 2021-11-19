@@ -10,13 +10,9 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
 if(!isset($_SESSION['utilisateur_id'])){
   header('Location:connexion.php');
-}else {
-  echo "ok";
 }
 
-
-
-$profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$user."'");
+$profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `id`= "'.$_SESSION['utilisateur_id']."'");
 
 //le bout de code suivant est seulement pour l'image de profil -- non demandé par la consigne
   if (isset($_POST['sauvimg'])){
@@ -53,7 +49,7 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$
 
           move_uploaded_file($fileTmpName, $fileDestination);
 
-          $queryInsert = mysqli_query($connect, "UPDATE `utilisateurs` SET `imgprofil`='$fileNewName' WHERE `login`= '".$user."'");
+          $queryInsert = mysqli_query($connect, "UPDATE `utilisateurs` SET `imgprofil`='$fileNewName' WHERE `login`= '".$_SESSION['utilisateur_login']."'");
            
           header('Location:connexion.php');
 
@@ -75,8 +71,41 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$
       $profilErr .= "Ce type de fichier n'est pas pris en compte par le site web. Extensions possibles : .jpeg, .jpg et .png.";
     }
   }
-  var_dump($_SESSION); ?>
+  
+  if (isset($_POST['enregistrer'])){
+    //var_dump([$_POST]);
+      $newLogin = $_POST['user_login'];
+      $newFirstname = $_POST['user_firstname'];
+      $newLastname = $_POST['user_lastname'];
+      $newPassword = $_POST['password'];
+      $newConfpass = $_POST['password2'];
+      $newBio = $_POST['user_bio'];
+
+      if ($newConfpass !== $newPassword) {
+        $confpasswordErr .= "Le mot de passe et sa confirmation ne sont pas les mêmes.";
+      }
+
+      $rpLogin = mysqli_query($connect, "SELECT `login` FROM `utilisateurs` WHERE `login`= '".$newLogin."'");
+      // $repLogin = mysqli_fetch_all($queryLogin, MYSQLI_ASSOC);  
+        if(mysqli_num_rows($rpLogin)){
+          $loginErr .= "Ce nom d'utilisateur est déjà pris.";}
+
+
+     $queryUpdate = mysqli_query($connect, "UPDATE `utilisateurs` SET `login`='$newLogin',`prenom`='$newFirstname',`nom`='$newLastname',`password`='$newPassword',`bio`='$newBio' WHERE `login`= '".$_SESSION['utilisateur_login']."'");
+
+  header('Location:connexion.php');
+  }
+
+  if (isset($_POST['deco'])){
+    session_destroy();
+    header('Location:connexion.php');
+  }
+
+
+  ?>
   <img src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="180px" height="185px">
+
+
 
 
 <!doctype html>
@@ -90,23 +119,26 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$
 </head>
 <body>
     <header>
-
+      NAVIGATION
+    <form action="profil.php" method="post">
+        <button type="submit" name="deco">Deconnexion</button>
+    </form>
     </header>
 
     <main>
-      Bonjour <?php echo $_SESSION['utilisateur_login']; ?>
+      Passeport de <?php echo $_SESSION['utilisateur_login']; ?>
       
       <form action="profil.php" method="POST" enctype="multipart/form-data">
             <input type="file" name="profilImg"><br><br>
             <span><?php echo $profilErr; echo $pictureErr; echo $sizeErr; ?></span>
             <input type="submit" name="sauvimg" value="Sauvegarder">
-      <div>
-        <label>Bio</label>
-        <textarea name="bio" value="<?php echo $_SESSION['utilisateur_bio'] ?>" id="bio" cols="30" rows="2"></textarea>
-      </div>
       </form>
 
       <form action="profil.php" method="post">
+      <div>
+        <label>Bio</label>
+        <input type="text" value="<?php echo $_SESSION['utilisateur_bio'] ?>" id="bio" name="user_bio">
+      </div>
         <div>
             <label for="name">Login :</label>
             <input type="text" value="<?php echo $_SESSION['utilisateur_login'] ?>" id="login" name="user_login"> <p><span class="error">*<?php echo $loginErr;?></span></p>
@@ -122,10 +154,9 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$
         <div>
           <label for="msg">Mot de passe :</label>
         <div>Le mdp doit comprendre au moins XXXX,XXXX et XXXXX (quand on clique sur le champs ceci apparait)</div>
-          <input type="password" id="pass" name="password"minlength="8" required><p><span class="error"> *<?php echo $passwordErr;?></span></p>
+          <input type="password" id="pass" name="password"><p><span class="error">
           <label for="msg">Confirmation du mot de passe :</label>
-          <input type="password" id="pass2" name="password2"
-          minlength="8" required><?php echo $confpasswordErr;?>
+          <input type="password" id="pass2" name="password2">*<?php echo $confpasswordErr;?>
         </div>   
                 <button type="submit" name="enregistrer">Save the changes</button>
         </form>
@@ -138,9 +169,3 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `login`= "'.$
 </body>
 </html>
 
-
-
-value = $_SESSION
-comme ça déjà update 
-ET UN SEUL BOUTON SAUVEGARDER POUR tout
-comme ça pas besoin de revenir à chaque fois en session destroy sur la connexion et donc cacher le fait qu'on doive refresh pour mettre les updates (pb de php)

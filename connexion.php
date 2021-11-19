@@ -13,10 +13,6 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
 //var_dump ($_SESSION);
 
-if(isset($_POST['logout']))
-{
-  session_destroy();
-}
 
 if(isset($_POST['connexion'])){
   $login=$_POST['user_login'];
@@ -29,13 +25,7 @@ if(isset($_POST['connexion'])){
 //ces informations récoltées sont utilisées dans profil.php
   $repTest = mysqli_query($connect, "SELECT * FROM `utilisateurs` WHERE `login`= '".$login."'");
   $rTest = mysqli_fetch_all($repTest,MYSQLI_ASSOC);
-  foreach ($rTest as $value){
-    //var_dump ($value);
-    echo "<tr><td>". $value ['prenom'] ."</td>";
-    echo "<tr><td>". $value ['nom'] ."</td>";
-    echo "<tr><td>". $value ['bio'] ."</td>";
-    echo "<tr><td>". $value ['imgprofil'] ."</td>";
-    
+  foreach ($rTest as $value){    
     $_SESSION['utilisateur_prenom']=$value ['prenom'];
     $_SESSION['utilisateur_nom']=$value ['nom'];
     $_SESSION['utilisateur_bio']=$value ['bio'];
