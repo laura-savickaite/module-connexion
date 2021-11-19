@@ -28,11 +28,7 @@ $reponse = mysqli_fetch_array($query, MYSQLI_ASSOC);
 foreach($reponse as $admindex){
 
   if($admindex == "1"){ ?>
-    <a href="profil.php">Mon profil</a>
     <a href="admin.php">Tableau Admin</a>
-    <form action="index.php" method="post">
-        <button type="submit" name="logout">Deconnexion</button>
-    </form>
   <?php
 
   }
