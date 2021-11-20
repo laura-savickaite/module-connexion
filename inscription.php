@@ -88,7 +88,8 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 </head>
 <body>
     <header>
-
+    <a href="index.php"><img class="leaflogo" src="Images/leaflogo.png" width="30px"></a>
+      <p id="indexlien"> Back to the index</p>
     </header>
 
     <main>
@@ -122,11 +123,12 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
             <input type="password" id="pass2" name="password2" required
             ><?php echo $confpasswordErr;?>
                   <div class="boutons">
-                    <button class="boutoninscription" type="submit" name="inscription">Sign in</button>
+                    <button class="boutoninscription" type="submit" name="inscription">Sign in</button></form>
                     <p id="comptetxt">Vous avez déjà un compte ? </p>
-                    <button class="boutoninscription" type="submit" name="connexion">Log in</button>
+                    
+                    <button class="boutoninscription" onclick="window.location.href = 'connexion.php';" type="submit" name="connexion">Log in</button>
                 </div>
-          </form>
+          
         </div></div>
         </section>
   </article>

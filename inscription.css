@@ -4,6 +4,24 @@ body {
     padding: 0;
 }
 
+header{
+    display: flex;
+    flex-direction: row;
+}
+
+.leaflogo {
+    transform: translate(10px, 10px);
+}
+#indexlien {
+    font-family: 'Roboto Mono', monospace;
+    margin-left: 40px;
+    visibility: hidden;
+}
+a:hover + #indexlien{
+    visibility: visible;
+}
+
+
 main {
     display: flex;
     flex-direction: row;
@@ -15,6 +33,7 @@ main {
     width: 55%;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
+    box-shadow: 20px 0 20px -20px #8a8a8b;
 }
 #top_part {
     background-image: url('Images/nookpattern.jpeg');
@@ -110,7 +129,7 @@ hr {
 }
 #comptetxt {
     position:absolute;
-    top:65%;
+    top:72%;
     right: 45%;
     font-family: 'Roboto Mono', monospace;
     font-size: 10px;
@@ -140,7 +159,7 @@ hr {
     background-size: 100%;
     -webkit-animation-name: pulse;
     animation-name: pulse;
-    animation-delay:2.5s;
+    animation-delay:1.5s;
     -webkit-animation-delay:2.5s;
     -webkit-animation-duration: 0.5s;
     animation-duration: 0.5s;
