@@ -1,0 +1,116 @@
+body {
+    background-color:#F1F7E7;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#form_inscription {
+    width: 55%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+#top_part {
+    background-image: url('Images/nookpattern.jpeg');
+    background-size: 100%;
+    opacity: 0.70;
+    border-radius: 20px;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+h1 {
+    margin: 0;
+}
+#column {
+    display: flex;
+    flex-direction: row;
+}
+/* #champs_inscription {
+    display: flex;
+    flex-direction: row;
+} */
+input{
+    font-family: 'Roboto Mono', monospace;
+    border: none;
+    border-bottom: 1px solid rgb(214, 213, 213);
+}
+#billet_part1 {
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+}
+#barcode{
+    width: 50%;
+}
+#billet_part2 {
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+}
+.boutoninscription {
+    height: 30%;
+    width: 40%;
+    
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+
+}
+.boutoninscription:hover {
+    background-color: #75CFB8; 
+    color: white;
+}
+
+
+.aside_inscription {
+        height: 660px;
+        width: 400px;
+        background-image: url('Images/leafpattern.jpeg');
+        background-position: center;
+        background-size: cover;
+        margin-top: 4%;
+        box-shadow: 0.5rem 0.5rem #75CFB8, -0.5rem -0.5rem #99cfc2 inset;
+        opacity: 0.80;
+        
+}
+
+
+#icon_inscription {
+    display: flex;
+    flex-direction: column;
+}
+#cercle1 {
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
+    margin-top: 20%;
+    box-shadow: 20px 0 20px -20px #8a8a8b;
+    background-image: url(Images/leafpatternturqu.png);
+    background-size: 200%;
+    opacity: 0.90;
+}
+#cercle2 {
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
+    margin-top: 20%;
+    box-shadow: 20px 0 20px -20px #8a8a8b;
+    background-image: url(Images/leafpatternorange.png);
+    background-size: 200%;
+    opacity: 0.90;
+}
+#cercle3 {
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
+    margin-top: 20%;
+    box-shadow: 20px 0 20px -20px #8a8a8b;
+    background-image: url(Images/leafpatternblanc.png);
+    background-size: 200%;
+    opacity: 0.90;
+}
