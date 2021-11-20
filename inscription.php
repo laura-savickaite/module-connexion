@@ -78,6 +78,12 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="inscription.css">
 </head>
 <body>
@@ -88,7 +94,7 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
     <main>
     <article id="form_inscription">
 
-      <section id="champs_inscription"> 
+      <section> 
       <div id="top_part">
         <h1>BOARDING PASS</h1>
       </div>
@@ -97,7 +103,7 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
       <div id="billet_part1">
         <form action="inscription.php" method="post">
               <label for="name">Login :</label>
-              <input type="text" id="login" name="user_login"> <p><span class="error">*<?php echo $loginErr;?></span></p>
+              <input type="text" id="login" name="user_login"> <p class="error1">*<?php echo $loginErr;?></p>
 
             <label for="name">Prénom :</label>
             <input type="text" id="firstname" name="user_firstname">
@@ -111,20 +117,23 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
             <hr>
             <label for="msg">Mot de passe :</label>
           <!-- <span><p></p>Le mdp doit comprendre au moins XXXX,XXXX et XXXXX (quand on clique sur le champs ceci apparait)</p></span> -->
-            <input type="password" id="pass" name="password" required><p><span class="error"> *<?php echo $passwordErr;?></span></p>
+            <input type="password" id="pass" name="password" required><p class="error2"> *<?php echo $passwordErr;?></p>
             <label for="msg">Confirmation du mot de passe :</label>
             <input type="password" id="pass2" name="password2" required
             ><?php echo $confpasswordErr;?>
-                  
-                  <button class="boutoninscription" type="submit" name="inscription">Sign in</button>
-                  <div>Vous avez déjà un compte ? </div>
-                  <button class="boutoninscription" type="submit" name="connexion">Log in</button>
+                  <div class="boutons">
+                    <button class="boutoninscription" type="submit" name="inscription">Sign in</button>
+                    <p id="comptetxt">Vous avez déjà un compte ? </p>
+                    <button class="boutoninscription" type="submit" name="connexion">Log in</button>
+                </div>
           </form>
         </div></div>
         </section>
   </article>
   <article class="aside_inscription">
-  <!-- <img id="img" src="Images/leafpattern.jpeg" class="aside_inscription"> -->
+  <div class="stamp"></div>
+  <div class="stamp1"></div>
+  <div class="stamp2"></div>
   </article>
   <article id="icon_inscription">
     <div id="cercle1"></div>

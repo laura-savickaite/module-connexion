@@ -20,50 +20,101 @@ main {
     background-image: url('Images/nookpattern.jpeg');
     background-size: 100%;
     opacity: 0.70;
-    border-radius: 20px;
+    border-top-left-radius: 7%;
+    border-top-right-radius: 7%;
     padding-top: 3%;
     padding-bottom: 3%;
 }
 h1 {
     margin: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 35px;
+    padding-left: 6%;
+    letter-spacing: .2rem;
 }
 #column {
     display: flex;
     flex-direction: row;
 }
-/* #champs_inscription {
+
+label{
     display: flex;
-    flex-direction: row;
-} */
+    flex-direction: column;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: .1rem;
+}
 input{
     font-family: 'Roboto Mono', monospace;
     border: none;
     border-bottom: 1px solid rgb(214, 213, 213);
 }
+.error1 {
+    position: relative;
+    left: 70%;
+    top:-10%;
+}
+.error2{
+    position: relative;
+    left:90%;
+    top:-15%;
+}
 #billet_part1 {
     display: flex;
     flex-direction: column;
     margin: 5%;
+    margin-left: 10%;
+    line-height: 30px;
 }
 #barcode{
-    width: 50%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+    margin-top: 8%;
+    margin-left: 50%;
 }
 #billet_part2 {
     display: flex;
     flex-direction: column;
     margin: 5%;
+    margin-left: 10%;
+    line-height: 30px;
+    margin-right: 5%;
+}
+hr {
+    position: relative;
+    right: 125%;
+    top: 30%;
+    width: 185%;
+    border: 2px dotted rgb(100, 99, 99);
+    transform: rotate(90deg);  
+    margin-left: 20%;
 }
 .boutoninscription {
-    height: 30%;
-    width: 40%;
-    
+    width: 30%;
+    margin-left: 30px;
+    background-color: white;
+    border: none;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
-
 }
 .boutoninscription:hover {
     background-color: #75CFB8; 
+    border-radius: 5%;
     color: white;
+}
+.boutons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 25%;
+}
+#comptetxt {
+    position:absolute;
+    top:65%;
+    right: 45%;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    line-height: 20px;
 }
 
 
@@ -78,7 +129,113 @@ input{
         opacity: 0.80;
         
 }
+.stamp{
+    height:100px;
+    width:100px;
+    left:200px;
+    top:30px;
+    border-radius:5px;
+    position:relative;
+    background-image:url(Images/stamp1.webp);
+    background-size: 100%;
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    animation-delay:2.5s;
+    -webkit-animation-delay:2.5s;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    opacity: 0;
+    -webkit-animation-fill-mode:forwards;
+     animation-fill-mode:forwards;
+  }
+  
+  @keyframes pulse{
+    0%{
+      opacity: 0;
+    }
+    10%{
+      opacity:.50;
+      transform-origin: 50% 50%;
+      transform: rotate(-2deg) scale(5);
+      transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    }
+    100%{
+      opacity:1;
+      transform: rotate(-15deg) scale(1);
+    }
+  }
 
+  .stamp1{
+    height:100px;
+    width:100px;
+    left:100px;
+    top:120px;
+    border-radius:5px;
+    position:relative;
+    background-image:url(Images/stamp2.webp);
+    background-size: 100%;
+    -webkit-animation-name: pulse1;
+    animation-name: pulse1;
+    animation-delay:2.5s;
+    -webkit-animation-delay:2.5s;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    opacity: 0;
+    -webkit-animation-fill-mode:forwards;
+     animation-fill-mode:forwards;
+  }
+  
+  @keyframes pulse1{
+    0%{
+      opacity: 0;
+    }
+    10%{
+      opacity:.50;
+      transform-origin: 50% 50%;
+      transform: rotate(-2deg) scale(5);
+      transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    }
+    100%{
+      opacity:1;
+      transform: rotate(15deg) scale(1);
+    }
+  }
+
+  .stamp2{
+    height:100px;
+    width:100px;
+    left:200px;
+    top:240px;
+    border-radius:5px;
+    position:relative;
+    background-image:url(Images/stamp3.png);
+    background-size: 100%;
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    animation-delay:2.5s;
+    -webkit-animation-delay:2.5s;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    opacity: 0;
+    -webkit-animation-fill-mode:forwards;
+     animation-fill-mode:forwards;
+  }
+  
+  @keyframes pulse{
+    0%{
+      opacity: 0;
+    }
+    10%{
+      opacity:.50;
+      transform-origin: 50% 50%;
+      transform: rotate(-2deg) scale(5);
+      transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    }
+    100%{
+      opacity:1;
+      transform: rotate(-15deg) scale(1);
+    }
+  }
 
 #icon_inscription {
     display: flex;
