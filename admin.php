@@ -6,6 +6,7 @@ la base de données. -->
 <?php
 session_start();
 //var_dump($_SESSION);
+// PK LE LAURA_SAVICKAITE_MODULECONNEXION MARCHE PAS
 $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
 if (!isset($_SESSION['utilisateur_id'])){
