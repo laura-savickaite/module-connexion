@@ -22,6 +22,11 @@ if (!isset($_SESSION['utilisateur_id'])){
     }
 }
 
+mysqli_set_charset($connect,"utf8");
+
+$utilisateurs = mysqli_query ($connect, "SELECT * FROM `utilisateurs`");
+
+$recup = mysqli_fetch_all($utilisateurs, MYSQLI_ASSOC);
 
 if (isset($_POST['deco'])){
   session_destroy();
@@ -47,7 +52,9 @@ if (isset($_POST['deco'])){
     </header>
 
     <main>
-      <p>hello world</p>
+      <table>
+        
+      </table>
     </main>
 
     <footer>
