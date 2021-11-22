@@ -2,19 +2,8 @@
 <?php
 session_start();
 //var_dump($_SESSION);
-$connect = mysqli_connect('localhost', 'root', '', 'laura_savickaite_moduleconnexion');
+$connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
-
-$query=mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `id`= '".$_SESSION['utilisateur_id']."'");
-$reponse = mysqli_fetch_array($query, MYSQLI_ASSOC);
-foreach($reponse as $admindex){
-
-  if($admindex == "1"){ ?>
-    <a href="admin.php">Tableau Admin</a>
-  <?php
-
-  }
-}
 
 if (isset($_POST['logout'])){
   session_destroy();
@@ -62,7 +51,18 @@ if (isset($_POST['logout'])){
               </form>
             
         <?php
-        } ?>
+        } 
+        $query=mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `id`= '".$_SESSION['utilisateur_id']."'");
+        $reponse = mysqli_fetch_array($query, MYSQLI_ASSOC);
+        foreach($reponse as $admindex){
+
+          if($admindex == "1"){ ?>
+          <a href="admin.php">Tableau Admin</a>
+          <?php
+
+          }
+        }
+                ?>
         <img id="imgprofil" src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="100px" height="100px">
         <div id="labio"><p id="text"><?php echo $_SESSION['utilisateur_bio']; ?> </p></div>
     </header>

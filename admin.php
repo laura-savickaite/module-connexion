@@ -6,7 +6,7 @@ la base de données. -->
 <?php
 session_start();
 //var_dump($_SESSION);
-$connect = mysqli_connect('localhost', 'root', '', 'laura_savickaite_moduleconnexion');
+$connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
 if (!isset($_SESSION['utilisateur_id'])){
     header('Location:index.php');
@@ -15,7 +15,6 @@ if (!isset($_SESSION['utilisateur_id'])){
   $rpls = mysqli_fetch_array($pls, MYSQLI_ASSOC);
 
     foreach($rpls as $index){
-      echo $index;
 
       if($index !== "1"){
         header('Location:index.php');

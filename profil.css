@@ -7,7 +7,7 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-right: 2%;
+    margin-right: 5%;
 }
 .leaflogo {
     transform: translate(10px, 10px);
@@ -72,22 +72,12 @@ main{
 .profilimg {
     border-radius: 40%;
     position: absolute;
-    bottom: 50%;
+    bottom: 45%;
     left: 20%;
     z-index: 2;
+    border: 0.5rem solid #9CC094;
 }
-.contourimg {
-    background-image: url(Images/leafpatternblanc.png);
-    background-size: contain;
-    opacity: 0.5;
-    border-radius: 40%;
-    height: 28%;
-    width: 15%;
-    position: absolute;
-    bottom: 48%;
-    left: 19%;
-    z-index: 0;
-}
+
 
 #pourimage {
     padding-top: 20%;

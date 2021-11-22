@@ -6,7 +6,7 @@ qui sont actuellement stockées en base de données. -->
 <?php
 session_start();
 
-$connect = mysqli_connect('localhost', 'root', '', 'laura_savickaite_moduleconnexion');
+$connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
 if(!isset($_SESSION['utilisateur_id'])){
   header('Location:connexion.php');
@@ -141,7 +141,6 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `id`= "'.$_SE
         <div id="toppasseport"><p id="titre">- Passeport de <?php echo $_SESSION['utilisateur_login']; ?> -</p></div>
         <div id="row">
         <section id="pourimage">
-        <div class="contourimg"></div>
           <form action="profil.php" method="POST" enctype="multipart/form-data">
                 <input type="file" name="profilImg">
                 <span><?php echo $profilErr; echo $pictureErr; echo $sizeErr; ?></span>
