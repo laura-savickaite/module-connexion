@@ -56,7 +56,7 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `id`= "'.$_SE
           $data = mysqli_fetch_array($queryInsert);
 
           while($data = mysqli_fetch_array($queryInsert)){ ?>
-            <img src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="180px" height="185px">
+            <img class="profilimg" src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="180px" height="185px">
           
         <?php
          }
@@ -103,7 +103,7 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `id`= "'.$_SE
 
 
   ?>
-  <img src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="180px" height="185px">
+<img class="profilimg" src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="180px" height="185px">
 
 
 
@@ -114,53 +114,69 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `id`= "'.$_SE
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
   <title>Profil || TITRE DE MON SITE</title>
-  <link rel="stylesheet" href="UC.css">
+  <link rel="stylesheet" href="profil.css">
 </head>
 <body>
     <header>
-      NAVIGATION
+    <a href="index.php"><img class="leaflogo" src="Images/leaflogo.png" width="30px"></a>
+      <p id="indexlien"> Back to the index</p>
     <form action="profil.php" method="post">
-        <button type="submit" name="deco">Deconnexion</button>
+        <input id="deco" type="submit" name="deco" value="Deconnexion"></input>
     </form>
     </header>
 
     <main>
-      Passeport de <?php echo $_SESSION['utilisateur_login']; ?>
       
-      <form action="profil.php" method="POST" enctype="multipart/form-data">
-            <input type="file" name="profilImg"><br><br>
-            <span><?php echo $profilErr; echo $pictureErr; echo $sizeErr; ?></span>
-            <input type="submit" name="sauvimg" value="Sauvegarder">
-      </form>
+      <article id="passeport">
+        <div id="toppasseport"><p id="titre">- Passeport de <?php echo $_SESSION['utilisateur_login']; ?> -</p></div>
+        <div id="row">
+        <section id="pourimage">
+        <div class="contourimg"></div>
+          <form action="profil.php" method="POST" enctype="multipart/form-data">
+                <input type="file" name="profilImg">
+                <span><?php echo $profilErr; echo $pictureErr; echo $sizeErr; ?></span>
+                <input class="boutonsauv" type="submit" name="sauvimg" value="Sauvegarder">
+          </form>
+        </section>
+        
+      
+        <section id="pourtext">
+          <div id="bio">
+            <input class="bubble-text sb14" type="text" value="<?php echo $_SESSION['utilisateur_bio'] ?>" id="bio" name="user_bio">
+          </div>
 
-      <form action="profil.php" method="post">
-      <div>
-        <label>Bio</label>
-        <input type="text" value="<?php echo $_SESSION['utilisateur_bio'] ?>" id="bio" name="user_bio">
-      </div>
-        <div>
-            <label for="name">Login :</label>
-            <input type="text" value="<?php echo $_SESSION['utilisateur_login'] ?>" id="login" name="user_login"> <p><span class="error">*<?php echo $loginErr;?></span></p>
-        </div>
-        <div>
-          <label for="name">Prénom :</label>
-          <input type="text" value="<?php echo $_SESSION['utilisateur_prenom'] ?>" id="firstname" name="user_firstname">
-        </div>
-        <div>
-          <label for="name">Nom :</label>
-          <input type="text" value="<?php echo $_SESSION['utilisateur_nom'] ?>" id="lastname" name="user_lastname">
-        </div>
-        <div>
-          <label for="msg">Mot de passe :</label>
-        <div>Le mdp doit comprendre au moins XXXX,XXXX et XXXXX (quand on clique sur le champs ceci apparait)</div>
-          <input type="password" id="pass" name="password"><p><span class="error">
-          <label for="msg">Confirmation du mot de passe :</label>
-          <input type="password" id="pass2" name="password2">*<?php echo $confpasswordErr;?>
-        </div>   
-                <button type="submit" name="enregistrer">Save the changes</button>
+              <label for="name">Login</label>
+              <input class="formpourtext" type="text" value="<?php echo $_SESSION['utilisateur_login'] ?>" id="login" name="user_login"> 
+              <!-- <span class="error">*<?php echo $loginErr;?></span> -->
+
+            <div id="nomprenom">
+              <label for="name">Prénom</label>
+              <input class="formpourtext" type="text" value="<?php echo $_SESSION['utilisateur_prenom'] ?>" id="firstname" name="user_firstname">
+              <label for="name">Nom</label>
+              <input class="formpourtext" type="text" value="<?php echo $_SESSION['utilisateur_nom'] ?>" id="lastname" name="user_lastname">
+            </div>
+
+            <label for="msg">Mot de passe</label>
+            <input class="formpourtext" type="password" id="pass" name="password"><p><span class="error">
+            <label for="msg">Confirmation du mot de passe</label>
+            <input class="formpourtext" type="password" id="pass2" name="password2">*<?php echo $confpasswordErr;?>  
+
+                  <button class="boutoninscription" type="submit" name="enregistrer">Save the changes</button>
         </form>
-
+      </section>
+      </div>
+      <div id="bottompasseport"><p id="port"><<<<<<<<<<<<<<<<<<<<<<<<<<<<<</p></div>
+      </article>
     </main>
 
     <footer>

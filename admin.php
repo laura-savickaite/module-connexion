@@ -13,6 +13,7 @@ if (!isset($_SESSION['utilisateur_id'])){
 } else {
   $pls=mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `id`= '".$_SESSION['utilisateur_id']."'");
   $rpls = mysqli_fetch_array($pls, MYSQLI_ASSOC);
+  
     foreach($rpls as $index){
       echo $index;
 

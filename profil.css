@@ -1,0 +1,180 @@
+body{
+    background-color: #F0E5D8;
+    margin: 0;
+    padding: 0;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 2%;
+}
+.leaflogo {
+    transform: translate(10px, 10px);
+}
+#indexlien {
+    font-family: 'Roboto Mono', monospace;
+    margin-left: 40px;
+    visibility: hidden;
+}
+a:hover + #indexlien{
+    visibility: visible;
+}
+
+#deco {
+    background-color: #75CFB8;
+    border-style: none;
+    margin: 5%;
+    border-radius: 3px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#passeport{
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+    background-color: #BFD8B8;
+    height: 80%;
+    width: 70%;
+    z-index: 1;
+    border-radius: 10%;
+    margin-left: 15%;
+}
+#toppasseport {
+    background-image: url(Images/leafpatternblanc.png);
+    background-size: cover;
+    height: 100px;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    opacity: 0.9;
+}
+#titre {
+    text-align: center;
+    margin-top: 3%;
+    font-family: 'Space Mono', monospace;
+    font-size: 25px;
+    letter-spacing: .2rem;
+    color: rgb(39, 39, 39);
+}
+#row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 10%;
+    padding-bottom: 5%;
+}
+
+.profilimg {
+    border-radius: 40%;
+    position: absolute;
+    bottom: 50%;
+    left: 20%;
+    z-index: 2;
+}
+.contourimg {
+    background-image: url(Images/leafpatternblanc.png);
+    background-size: contain;
+    opacity: 0.5;
+    border-radius: 40%;
+    height: 28%;
+    width: 15%;
+    position: absolute;
+    bottom: 48%;
+    left: 19%;
+    z-index: 0;
+}
+
+#pourimage {
+    padding-top: 20%;
+}
+
+#bio {
+    margin-top: -5%;
+}
+.bubble-text{
+    background:#e1eedd; 
+    color:rgb(19, 18, 18); 
+    padding:7px 15px; 
+    border-top-left-radius:3px; 
+    border-top-right-radius:3px;
+    border-bottom-right-radius:3px;
+    border-style: none;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: .1rem;
+    width: 40%;
+}
+#pourtext {
+    line-height: 50px;
+    width: 55%;
+}
+#nomprenom{
+   display: flex;
+   flex-direction: row;
+}
+label{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: .1rem;
+}
+
+.formpourtext {
+    border-style: none;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    background-color: #BFD8B8;
+    border-bottom: 1px solid #a1b69b;
+}
+
+.boutoninscription {
+    display: block;
+    height: 10%;
+    width: 30%;
+    margin-left: 80px;
+    margin-top: 5%;
+    background-color: #BFD8B8;
+    border: none;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+.boutoninscription:hover {
+    background-color: #75CFB8; 
+    border-radius: 5%;
+    color: white;
+}
+
+#bottompasseport{
+    background-image: url(Images/leafpatternblanc.png);
+    background-size: cover;
+    height: 100px;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    opacity: 0.9;
+}
+
+#port {
+    margin-left: 40%;
+    color: rgb(39, 39, 39);
+    letter-spacing: 10px;
+}
+
+.boutonsauv{ 
+    background-color: #BFD8B8;
+    border-style: none;
+    display: flex;
+    margin-left: 20%;
+    margin-top: 5%;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    height: 20%;
+}
+.boutonsauv:hover {
+    background-color: #75CFB8; 
+    border-radius: 5%;
+    color: white;
+}
