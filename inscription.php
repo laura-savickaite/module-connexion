@@ -74,7 +74,7 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inscription || TITRE DE MON SITE</title>
+  <title>Inscription || AACLF</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
@@ -132,7 +132,7 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
         </div></div>
         </section>
   </article>
-  
+
   <article class="aside_inscription">
     <div class="stamp"></div>
     <div class="stamp1"></div>

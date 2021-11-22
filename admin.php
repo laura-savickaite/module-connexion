@@ -13,7 +13,7 @@ if (!isset($_SESSION['utilisateur_id'])){
 } else {
   $pls=mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `id`= '".$_SESSION['utilisateur_id']."'");
   $rpls = mysqli_fetch_array($pls, MYSQLI_ASSOC);
-  
+
     foreach($rpls as $index){
       echo $index;
 
@@ -37,7 +37,7 @@ if (isset($_POST['deco'])){
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin || TITRE DE MON SITE</title>
+  <title>Admin || AACLF</title>
   <link rel="stylesheet" href="UC.css">
 </head>
 <body>
