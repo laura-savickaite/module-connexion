@@ -41,19 +41,47 @@ if (isset($_POST['deco'])){
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
   <title>Admin || AACLF</title>
-  <link rel="stylesheet" href="UC.css">
+  <link rel="stylesheet" href="admin.css">
 </head>
 <body>
     <header>
+    <a href="index.php"><img class="leaflogo" src="Images/leaflogo.png" width="30px"></a>
+      <p id="indexlien"> Back to the index</p>
     <form action="admin.php" method="post">
-        <button type="submit" name="deco">Deconnexion</button>
+        <button id="deco" type="submit" name="deco">Deconnexion</button>
     </form>
     </header>
 
     <main>
       <table>
-        
+      <thead>
+        <tr>
+            <th>login</th>
+            <th>prenom</th>
+            <th>nom</th>
+            <th>mot de passe</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($utilisateurs as $value){
+            echo "<tr><td>". $value ['login'] ."</td>";
+            echo "<td>". $value ['prenom'] ."</td>";
+            echo "<td>". $value ['nom'] ."</td>";
+            echo "<td>". $value ['password'] ."</td></tr>";
+        }
+        ?>
+    </tbody>
       </table>
     </main>
 

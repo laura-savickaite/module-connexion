@@ -1,0 +1,45 @@
+body {
+    background-color: #9CC094;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+.leaflogo {
+    transform: translate(10px, 10px);
+}
+#indexlien {
+    font-family: 'Roboto Mono', monospace;
+    margin-left: 40px;
+    visibility: hidden;
+}
+a:hover + #indexlien{
+    visibility: visible;
+}
+#deco {
+    background-color: #75CFB8;
+    border-style: none;
+    margin: 5%;
+    border-radius: 3px;
+    margin-top: 28px;
+    color: ivory;
+}
+
+
+table {
+    background-color: #FFF7E0;
+    text-align: center;
+    margin-left: 35%;
+    margin-top: 15%;
+    padding: 3%;
+    border-radius: 10%;
+    font-family: 'Josefin Sans', sans-serif;
+}
+td {
+    margin: 10px;;
+}
+
+button {
+    border: none;
+}
