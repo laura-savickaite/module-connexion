@@ -132,11 +132,13 @@ $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
         </div></div>
         </section>
   </article>
+  
   <article class="aside_inscription">
-  <div class="stamp"></div>
-  <div class="stamp1"></div>
-  <div class="stamp2"></div>
+    <div class="stamp"></div>
+    <div class="stamp1"></div>
+    <div class="stamp2"></div>
   </article>
+
   <article id="icon_inscription">
     <div id="cercle1"></div>
     <div id="cercle2"></div>

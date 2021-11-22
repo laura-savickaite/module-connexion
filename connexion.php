@@ -7,7 +7,6 @@ plusieurs) variables de session sont créées. -->
 
 <?php
 session_start();
-var_dump($_SESSION);
 
 $connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
 
@@ -62,27 +61,50 @@ if(isset($_POST['connexion'])){
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
   <title>Connexion || TITRE DE MON SITE</title>
-  <link rel="stylesheet" href="UC.css">
+  <link rel="stylesheet" href="connexion.css">
 </head>
 <body>
     <header>
-
+    <a href="index.php"><img class="leaflogo" src="Images/leaflogo.png" width="30px"></a>
+      <p id="indexlien"> Back to the index</p>
     </header>
 
     <main>
-    <form action="" method="post">
-        <div><?php echo $logErr; ?></div>
-        <div>
-            <label for="name">Login :</label>
-            <input type="text" id="login" name="user_login"> 
-        </div>
-        <div>
-          <label for="msg">Mot de passe :</label>
-          <input type="password" id="pass" name="password">
-        </div>
-      <button type="submit" name="connexion">Log in</button>
-    </form>
+
+    <article id="connexion_carte">
+      <section class="topcarte"><h1>Welcome Back!</h1></section>
+      <section id="form_connexion">
+        <form action="" method="post">
+            <div><?php echo $logErr; ?></div>
+            <div>
+                <label for="name">Login :</label>
+                <input type="text" id="login" name="user_login"> 
+            </div>
+            <div>
+              <label for="msg">Mot de passe :</label>
+              <input type="password" id="pass" name="password">
+            </div>
+          <button class="boutoninscription" type="submit" name="connexion">Log in</button>
+        </form>
+      </section>
+      <section class="bottomcarte"><p id="bottomtext">Thanks for coming back!</p></section>
+    </article>
+
+    <article id="side_connexion">
+      <section class="topcarte"></section>
+      <section id="bottomcard"></section>
+    </article>
+
     </main>
 
     <footer>
