@@ -6,7 +6,7 @@ la base de données. -->
 <?php
 session_start();
 //var_dump($_SESSION);
-$connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
+$connect = mysqli_connect('localhost', 'root', '', 'laura_savickaite_moduleconnexion');
 
 if (!isset($_SESSION['utilisateur_id'])){
     header('Location:index.php');

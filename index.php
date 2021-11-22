@@ -2,7 +2,7 @@
 <?php
 session_start();
 //var_dump($_SESSION);
-$connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
+$connect = mysqli_connect('localhost', 'root', '', 'laura_savickaite_moduleconnexion');
 
 
 $query=mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `id`= '".$_SESSION['utilisateur_id']."'");
