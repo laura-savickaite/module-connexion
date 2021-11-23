@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 19 nov. 2021 à 15:09
+-- Généré le : mar. 23 nov. 2021 à 10:27
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.0.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `moduleconnexion`
+-- Base de données : `laura-savickaite_moduleconnexion`
 --
 
 -- --------------------------------------------------------
@@ -44,7 +44,7 @@ CREATE TABLE `utilisateurs` (
 INSERT INTO `utilisateurs` (`id`, `login`, `prenom`, `nom`, `password`, `imgprofil`, `bio`) VALUES
 (1, 'admin', 'admin', 'admin', 'admin', '', ''),
 (43, 'tomnook', 'tom', 'nook', 'aixenprovence', '619767a18d0dd7.64059209.jpeg', 'inventeur du capitalisme'),
-(45, 'isabelle', 'isabelle', 'ledoudou', '', '61976c8698e4c0.90476066.png', 'bonjour les amis !'),
+(45, 'isabelle', 'isabelle', 'ledoudou', 'animalcrossing', '61976c8698e4c0.90476066.png', 'bonjour les amis !'),
 (46, 'marshal', 'marshal', 'lebb', 'animalcrossing', '619768baa73867.34105540.png', NULL);
 
 --
@@ -65,7 +65,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
