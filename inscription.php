@@ -3,7 +3,7 @@
 //var_dump($_POST);
 
 // //renvoi à la base de données
-$connect = mysqli_connect('localhost', 'root', '', 'laura-savickaite_moduleconnexion');
+$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_moduleconnexion');
 
   //ceci servira à contraster avec les validations fausses du dessous, ainsi plus tard utiliser ceci dans la logique de "si mon formulaire est juste ALORS tu m'envoies dans la base de données" - donc, si post pas vide - tu m'extraies les données - et dans ce cas c'est juste ::::::: plus tard SI le empty est vide dans ce cas tu mets erreur etc....
   

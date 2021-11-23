@@ -2,7 +2,7 @@
 <?php
 session_start();
 //var_dump($_SESSION);
-$connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
+$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_moduleconnexion');
 
 
 if (isset($_POST['logout'])){
