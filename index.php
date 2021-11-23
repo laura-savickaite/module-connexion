@@ -73,7 +73,7 @@ if (isset($_POST['logout'])){
         <p id="titresite">An Animal Crossing Little Fansite</p>
     </div>
         
-
+      <a href="https://github.com/laura-savickaite/module-connexion"><img class="github" src="Images/github.png" width="50px"></a>
       <img class="ilot" src="Images/melimelonook.png" width="600px">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
        <path fill="#91e2f5" fill-opacity="1" d="M0,32L40,37.3C80,43,160,53,240,96C320,139,400,213,480,218.7C560,224,640,160,720,154.7C800,149,880,203,960,192C1040,181,1120,107,1200,74.7C1280,43,1360,53,1400,58.7L1440,64L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>

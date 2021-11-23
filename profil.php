@@ -6,7 +6,7 @@ qui sont actuellement stockées en base de données. -->
 <?php
 session_start();
 
-$connect = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
+$connect = mysqli_connect('localhost', 'root', '', 'laura-savickaite_moduleconnexion');
 
 if(!isset($_SESSION['utilisateur_id'])){
   header('Location:connexion.php');
