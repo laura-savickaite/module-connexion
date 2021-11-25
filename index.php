@@ -50,7 +50,8 @@ if (isset($_POST['logout'])){
               <form action="index.php" method="post">
                   <input id="deco" type="submit" name="logout" value="Deconnexion"></input>
               </form>
-              
+              <img id="imgprofil" src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="100px" height="100px">
+              <div id="labio"><p id="text"><?php echo $_SESSION['utilisateur_bio']; ?> </p></div>
             
         <?php
         } 
@@ -65,8 +66,7 @@ if (isset($_POST['logout'])){
           }
         }
              ?>
-        <img id="imgprofil" src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="100px" height="100px">
-        <div id="labio"><p id="text"><?php echo $_SESSION['utilisateur_bio']; ?> </p></div>
+
     </header>
 
     <main>
