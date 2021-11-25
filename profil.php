@@ -73,7 +73,7 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `id`= "'.$_SE
   }
   
   if (isset($_POST['enregistrer'])){
-    //var_dump([$_POST]);
+      
       $newLogin = $_POST['user_login'];
       $newFirstname = $_POST['user_firstname'];
       $newLastname = $_POST['user_lastname'];
@@ -93,7 +93,11 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `id`= "'.$_SE
 
      $queryUpdate = mysqli_query($connect, "UPDATE `utilisateurs` SET `login`='$newLogin',`prenom`='$newFirstname',`nom`='$newLastname',`password`='$newPassword',`bio`='$newBio' WHERE `login`= '".$_SESSION['utilisateur_login']."'");
 
-  header('Location:connexion.php');
+    $_SESSION['utilisateur_bio']=$newBio;
+    $_SESSION['utilisateur_login']=$newLogin;
+    $_SESSION['utilisateur_prenom']=$newFirstname;
+    $_SESSION['utilisateur_nom']=$newLastname;
+    $_SESSION['password']=$newPassword;
   }
 
   if (isset($_POST['deco'])){
@@ -150,6 +154,7 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `id`= "'.$_SE
         
       
         <section id="pourtext">
+        <form action="profil.php" method="POST" enctype="multipart/form-data">
           <div id="bio">
             <input class="bubble-text sb14" type="text" value="<?php echo $_SESSION['utilisateur_bio'] ?>" id="bio" name="user_bio">
           </div>
@@ -170,7 +175,7 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `id`= "'.$_SE
             <label for="msg">Confirmation du mot de passe</label>
             <input class="formpourtext" type="password" id="pass2" name="password2">*<?php echo $confpasswordErr;?>  
 
-                  <button class="boutoninscription" type="submit" name="enregistrer">Save the changes</button>
+                  <input class="boutoninscription" type="submit" name="enregistrer"></input>
         </form>
       </section>
       </div>
