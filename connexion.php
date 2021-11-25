@@ -8,8 +8,8 @@ plusieurs) variables de session sont créées. -->
 <?php
 session_start();
 
-// $connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_moduleconnexion');
-$connect = mysqli_connect('localhost', 'root', '', 'laura-savickaite_moduleconnexion');
+$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_moduleconnexion');
+// $connect = mysqli_connect('localhost', 'root', '', 'laura-savickaite_moduleconnexion');
 
 //var_dump ($_SESSION);
 
