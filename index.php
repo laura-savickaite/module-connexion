@@ -1,8 +1,9 @@
 <!-- MA PAGE D'ACCUEIL DU SITE -->
 <?php
 session_start();
-//var_dump($_SESSION);
-$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_moduleconnexion');
+// var_dump($_SESSION);
+// $connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_moduleconnexion');
+$connect = mysqli_connect('localhost', 'root', '', 'laura-savickaite_moduleconnexion');
 
 
 if (isset($_POST['logout'])){
@@ -31,7 +32,7 @@ if (isset($_POST['logout'])){
 </head>
 <body>
     <header>
-            <?php if(!isset($_SESSION['login'])){ 
+            <?php if(!isset($_SESSION['utilisateur_login'])){ 
             
             ?>
           <div class="topindex">
@@ -49,8 +50,7 @@ if (isset($_POST['logout'])){
               <form action="index.php" method="post">
                   <input id="deco" type="submit" name="logout" value="Deconnexion"></input>
               </form>
-              <img id="imgprofil" src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="100px" height="100px">
-              <div id="labio"><p id="text"><?php echo $_SESSION['utilisateur_bio']; ?> </p></div>
+              
             
         <?php
         } 
@@ -65,6 +65,8 @@ if (isset($_POST['logout'])){
           }
         }
              ?>
+        <img id="imgprofil" src="Uploads/<?php echo $_SESSION['utilisateur_img']; ?>" alt="Profile picture" class='profil' width="100px" height="100px">
+        <div id="labio"><p id="text"><?php echo $_SESSION['utilisateur_bio']; ?> </p></div>
     </header>
 
     <main>
