@@ -105,7 +105,7 @@ $connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'la
       <div id="billet_part1">
         <form action="inscription.php" method="post">
               <label for="name">Login :</label>
-              <input type="text" id="login" name="user_login"> <p class="error1">*<?php echo $loginErr;?></p>
+              <input type="text" id="login" name="user_login"> <p class="error1">*<?php echo @$loginErr;?></p>
 
             <label for="name">Prénom :</label>
             <input type="text" id="firstname" name="user_firstname">
@@ -119,10 +119,10 @@ $connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'la
             <hr>
             <label for="msg">Mot de passe :</label>
           <!-- <span><p></p>Le mdp doit comprendre au moins XXXX,XXXX et XXXXX (quand on clique sur le champs ceci apparait)</p></span> -->
-            <input type="password" id="pass" name="password" required><p class="error2"> *<?php echo $passwordErr;?></p>
+            <input type="password" id="pass" name="password" required><p class="error2"> *<?php echo @$passwordErr;?></p>
             <label for="msg">Confirmation du mot de passe :</label>
             <input type="password" id="pass2" name="password2" required
-            ><?php echo $confpasswordErr;?>
+            ><?php echo @$confpasswordErr;?>
                   <div class="boutons">
                     <button class="boutoninscription" type="submit" name="inscription">Sign in</button></form>
                     <p id="comptetxt">Vous avez déjà un compte ? </p>

@@ -86,7 +86,7 @@ if(isset($_POST['connexion'])){
       <section class="topcarte"><h1>Welcome Back!</h1></section>
       <section id="form_connexion">
         <form action="" method="post">
-            <div><?php echo $logErr; ?></div>
+            <div><?php echo @$logErr; ?></div>
             <div>
                 <label for="name">Login :</label>
                 <input type="text" id="login" name="user_login"> 

@@ -148,7 +148,7 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `id`= "'.$_SE
         <section id="pourimage">
           <form action="profil.php" method="POST" enctype="multipart/form-data">
                 <input type="file" name="profilImg">
-                <span><?php echo $profilErr; echo $pictureErr; echo $sizeErr; ?></span>
+                <span><?php echo @$profilErr; echo @$pictureErr; echo @$sizeErr; ?></span>
                 <input class="boutonsauv" type="submit" name="sauvimg" value="Sauvegarder">
           </form>
         </section>
@@ -174,7 +174,7 @@ $profil=mysqli_query($connect, 'SELECT * FROM `utilisateurs` WHERE `id`= "'.$_SE
             <label for="msg">Mot de passe</label>
             <input class="formpourtext" type="password" id="pass" name="password"><p><span class="error">
             <label for="msg">Confirmation du mot de passe</label>
-            <input class="formpourtext" type="password" id="pass2" name="password2">*<?php echo $confpasswordErr;?>  
+            <input class="formpourtext" type="password" id="pass2" name="password2">*<?php echo @$confpasswordErr;?>  
 
                   <input class="boutoninscription" type="submit" name="enregistrer"></input>
         </form>

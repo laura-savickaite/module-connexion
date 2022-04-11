@@ -55,7 +55,7 @@ if (isset($_POST['logout'])){
             
         <?php
         } 
-        $query=mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `id`= '".$_SESSION['utilisateur_id']."'");
+        @$query=mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `id`= '".$_SESSION['utilisateur_id']."'");
         $reponse = mysqli_fetch_array($query, MYSQLI_ASSOC);
         foreach($reponse as $admindex){
 
